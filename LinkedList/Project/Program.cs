@@ -34,6 +34,7 @@ namespace Project
             foreach (var m in mylist)
                 Console.WriteLine(m);
 
+
         }
     }
 }
