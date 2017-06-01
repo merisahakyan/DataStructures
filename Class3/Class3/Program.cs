@@ -14,7 +14,7 @@ namespace Class3
             for (int i = 0; i < a.Length; i++)
             {
                 max_index = Max(a, i);
-                Swap(a,max_index, a.Length - 1 - i);
+                Swap(ref a[max_index], ref a[a.Length - 1 - i]);
             }
 
         }
@@ -26,11 +26,11 @@ namespace Class3
                     index = i;
             return index;
         }
-        static void Swap(int[] arr,int a, int b)
+        static void Swap(ref int a, ref int b)
         {
-            int temp = arr[a];
-            arr[a] = arr[b];
-            arr[b] = temp;
+            int t = a;
+            a = b;
+            b = t;
         }
         static void Main(string[] args)
         {
