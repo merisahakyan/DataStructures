@@ -86,36 +86,37 @@ namespace ArrayService
                 Merge(arr, first, mid, last);
             }
         }
+        //TODO 
         public static void Merge(int[] arr, int first, int mid, int last)
         {
-            int[] temp = new int[arr.Length];
-            int first1 = first;
-            int last1 = mid;
-            int first2 = mid + 1;
-            int last2 = last;
-            int i = 0;
-            for (; first1 <= last1 && first2 <= last2; i++)
-            {
-                if (arr[first1] < arr[first2])
-                {
-                    temp[i] = arr[first1];
-                    first1++;
-                }
-                else
-                {
-                    temp[i] = arr[first2];
-                    first2++;
-                }
-            }
-            if (first1 <= last1)
-                for (; first1 <= last1; i++)
-                    temp[i] = arr[first1++];
-            else
-                for (; first2 <= last2; i++)
-                    temp[i] = arr[first2++];
-            int k = 0;
-            for (int j = first; j < last; j++)
-                arr[j] = temp[k++];
+            //int[] temp = new int[arr.Length];
+            //int first1 = first;
+            //int last1 = mid;
+            //int first2 = mid + 1;
+            //int last2 = last;
+            //int i = 0;
+            //for (; first1 <= last1 && first2 <= last2; i++)
+            //{
+            //    if (arr[first1] < arr[first2])
+            //    {
+            //        temp[i] = arr[first1];
+            //        first1++;
+            //    }
+            //    else
+            //    {
+            //        temp[i] = arr[first2];
+            //        first2++;
+            //    }
+            //}
+            //if (first1 <= last1)
+            //    for (; first1 <= last1; i++)
+            //        temp[i] = arr[first1++];
+            //else
+            //    for (; first2 <= last2; i++)
+            //        temp[i] = arr[first2++];
+            //int k = 0;
+            //for (int j = first; j < last; j++)
+            //    arr[j] = temp[k++];
             
         }
     }
