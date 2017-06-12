@@ -76,48 +76,48 @@ namespace ArrayService
         }
 
 
-        public static void MergeSort(int[] arr, int first, int last)
+        public static void MergeSort(int[] items)
         {
-            if (first < last)
+            if (items.Length <= 1)
             {
-                int mid = (first + last) / 2;
-                MergeSort(arr, first, mid);
-                MergeSort(arr, mid + 1, last);
-                Merge(arr, first, mid, last);
+                return;
             }
+            int leftSize = items.Length / 2;
+            int rightSize = items.Length - leftSize;
+            int[] left = new int[leftSize];
+            int[] right = new int[rightSize];
+            Array.Copy(items, 0, left, 0, leftSize);
+            Array.Copy(items, leftSize, right, 0, rightSize);
+            MergeSort(left);
+            MergeSort(right);
+            Merge(items, left, right);
         }
-        //TODO 
-        public static void Merge(int[] arr, int first, int mid, int last)
+        private static void Merge(int[] items, int[] left, int[] right)
         {
-            //int[] temp = new int[arr.Length];
-            //int first1 = first;
-            //int last1 = mid;
-            //int first2 = mid + 1;
-            //int last2 = last;
-            //int i = 0;
-            //for (; first1 <= last1 && first2 <= last2; i++)
-            //{
-            //    if (arr[first1] < arr[first2])
-            //    {
-            //        temp[i] = arr[first1];
-            //        first1++;
-            //    }
-            //    else
-            //    {
-            //        temp[i] = arr[first2];
-            //        first2++;
-            //    }
-            //}
-            //if (first1 <= last1)
-            //    for (; first1 <= last1; i++)
-            //        temp[i] = arr[first1++];
-            //else
-            //    for (; first2 <= last2; i++)
-            //        temp[i] = arr[first2++];
-            //int k = 0;
-            //for (int j = first; j < last; j++)
-            //    arr[j] = temp[k++];
-            
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int targetIndex = 0;
+            int remaining = left.Length + right.Length;
+            while (remaining > 0)
+            {
+                if (leftIndex >= left.Length)
+                {
+                    items[targetIndex] = right[rightIndex++];
+                }
+                else if (rightIndex >= right.Length)
+                {
+                    items[targetIndex] = left[leftIndex++];
+                }
+                else if (left[leftIndex].CompareTo(right[rightIndex]) < 0)
+                {
+                    items[targetIndex] = left[leftIndex++];
+                }
+                else
+                {
+                    items[targetIndex] = right[rightIndex++];
+                }
+                targetIndex++; remaining--;
+            }
         }
     }
 }

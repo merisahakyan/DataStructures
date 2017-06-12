@@ -20,9 +20,8 @@ namespace Testing
             // Services.MergeSort(arr, 0, arr.Length);
             //  Services.MergeSort(a, 0, a.Length - 1);
             Services.PrintArray(a);
-            //binary sort doesn't working
-            int[] b = Services.BinarySort(a);
-            Services.PrintArray(b);
+            Services.MergeSort(a);
+            Services.PrintArray(a);
         }
     }
 }
